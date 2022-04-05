@@ -1,0 +1,66 @@
+import java.util.Scanner;
+
+public class project {
+    public static void main(String[] args) {
+        Scanner inp = new Scanner(System.in);
+        String userName, password;
+int right =3;
+int balance =3000;
+
+int select;
+
+while (right>0){
+    System.out.println("Sayca Banka Hos Geldiniz");
+    System.out.print("Lutfen kullanici adini giriniz :");
+    userName=inp.nextLine();
+    System.out.print("Lutfen parolanizi giriniz :");
+    password= inp.nextLine();
+
+    if(userName.equals("ayca")&& password.equals("170317")){
+        System.out.println("Basarili giris yaptiniz menuye yonlendiriliyorsunuz.");
+        do {
+            System.out.println("1- Para yatirma\n" +
+                    "2- Para cekme\n" +
+                    "3- Bakiye sorgulama\n" +
+                    "4-Cikis yapiniz.");
+            System.out.print("Lutfen yapmak istediginiz islemi seciniz :");
+            select = inp.nextInt();
+            switch (select) {
+                case 1:
+                    System.out.print("Yatirilicak para miktarini giriniz :");
+                    int miktar = inp.nextInt();
+                    balance += miktar;
+                    break;
+                case 2:
+                    System.out.print("Cekilecek para miktarini giriniz :");
+                    int cekme = inp.nextInt();
+                    if(cekme>balance){
+                        System.out.println("Yetersiz Bakiye.");
+                    }else{
+                    balance -= cekme;
+                        System.out.println("Kalan bakiyeniz :"+balance);}
+                    break;
+                case 3:
+                    System.out.println("Bakiyeniz :" + balance);
+                    break;
+                default:
+                    System.out.print("Cikis yapildi. Iyi gunler dileriz.");
+
+            }
+        }
+            while (select!=4);
+                break;
+        } else {
+        right--;
+        System.out.print("Kullanici adi veya parolaniz hatali. Tekrar deneyiniz.");
+if(right==0){
+    System.out.print("Hesabiniz bloke olmustur. Bankaniz ile gorusunuz.");
+}else {
+    System.out.print("Kalan hakkiniz :"+right);
+}
+    }
+}
+
+
+    }
+}
